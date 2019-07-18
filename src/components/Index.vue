@@ -16,7 +16,7 @@
                 id="semail"
                 name="semail1"
                 class="form-control mr-md-1 semail"
-                placeholder=""
+                placeholder
               />
             </div>
             <button type="submit" class="btn btn-primary">搜索</button>
@@ -24,24 +24,20 @@
         </div>
         <!--//container-->
       </section>
-      <section class="blog-list px-3 py-5 p-md-5">
+      <section class="blog-list">
         <div class="container">
           <div class="item mb-5" v-for="(item, index) in blogList" v-bind:key="index">
-            <div class="media">
+            <div class="media" v-on:click="toDetail(item.id)">
               <div class="media-body">
                 <h3 class="title mb-1">
-                  <a href="blog-post.html">{{item.title}}</a>
+                  <p>{{item.title}}</p>
                 </h3>
                 <div class="meta mb-1">
                   <span class="date">发布于：{{item.date}}</span>
-                  <span class="comment">
-                    浏览次数：{{item.visitCount}}
-                  </span>
+                  <span class="comment">浏览次数：{{item.visitCount}}</span>
                 </div>
-                <div
-                  class="intro"
-                >{{item.content}}</div>
-                <a class="more-link" href="blog-post.html">查看更多 &rarr;</a>
+                <div class="intro">{{item.content}}</div>
+                <span class="more-link">查看更多 &rarr;</span>
               </div>
               <!--//media-body-->
             </div>
@@ -67,29 +63,46 @@
 </template>
 
 <script>
-import Header from './Header'
+import Header from "./Header";
 export default {
-  name: 'Index',
-  data () {
+  name: "Index",
+  data() {
     return {
-      blogList: [{
-        'id': 1,
-        'title': '一套基础自动化部署搭建过程1',
-        'date': '2019-07-15',
-        'visitCount': 120,
-        'content': '为了快速搭建一套PHP测试环境我决定用laradock了，虽然文件很多，但是里面封装的东西也是比较全的，后期开发不知道会用到什么技术，就决定先用这个，随时可以启动用得到的服务。laradock官方文档给的介绍也很全面，我这里采用的方式是部署多套项目方式目录结构如下：'
-      },
-      {
-        'id': 2,
-        'title': '一套基础自动化部署搭建过程2',
-        'date': '2019-07-15',
-        'visitCount': 120,
-        'content': '为了快速搭建一套PHP测试环境我决定用laradock了，虽然文件很多，但是里面封装的东西也是比较全的，后期开发不知道会用到什么技术，就决定先用这个，随时可以启动用得到的服务。laradock官方文档给的介绍也很全面，我这里采用的方式是部署多套项目方式目录结构如下：'
-      }]
+      blogList: [
+        {
+          id: 1,
+          title: "一套基础自动化部署搭建过程1",
+          date: "2019-07-15",
+          visitCount: 120,
+          content:
+            "为了快速搭建一套PHP测试环境我决定用laradock了，虽然文件很多，但是里面封装的东西也是比较全的，后期开发不知道会用到什么技术，就决定先用这个，随时可以启动用得到的服务。laradock官方文档给的介绍也很全面，我这里采用的方式是部署多套项目方式目录结构如下："
+        },
+        {
+          id: 2,
+          title: "一套基础自动化部署搭建过程2",
+          date: "2019-07-15",
+          visitCount: 120,
+          content:
+            "为了快速搭建一套PHP测试环境我决定用laradock了，虽然文件很多，但是里面封装的东西也是比较全的，后期开发不知道会用到什么技术，就决定先用这个，随时可以启动用得到的服务。laradock官方文档给的介绍也很全面，我这里采用的方式是部署多套项目方式目录结构如下："
+        }
+      ]
+    };
+  },
+  methods: {
+    toDetail(id) {
+      if (!id) {
+        return;
+      }
+      this.$router.push({
+        path: "/detail",
+        query: {
+          id: id
+        }
+      });
     }
   },
   components: { Header }
-}
+};
 </script>
 
 <style lang="scss" scoped type="text/css">
@@ -97,12 +110,10 @@ export default {
 .main-wrapper {
   margin-left: 280px;
   background: #fff;
-  .container {
-    max-width: 820px;
-  }
 }
 .blog-list {
   .item {
+    cursor: pointer;
     .title {
       font-size: 1.275rem;
       a {
@@ -162,26 +173,26 @@ export default {
   }
 }
 .btn-primary {
-  background: #5ECCA9;
+  background: #5ecca9;
   border: none;
 }
 .more-link {
-  color: #5ECCA9;
+  color: #5ecca9;
 }
 .blog-nav {
   .nav-link {
-    background: #5ECCA9;
+    background: #5ecca9;
     color: #fff;
     font-size: 1rem;
     padding: 1rem;
     font-weight: bold;
     position: relative;
     &:hover {
-      background: darken(#5ECCA9, 10%);
+      background: darken(#5ecca9, 10%);
     }
   }
   .nav-link-prev {
-    border-right: 1px solid darken(#5ECCA9, 20%);
+    border-right: 1px solid darken(#5ecca9, 20%);
   }
   .arrow-prev {
     position: absolute;

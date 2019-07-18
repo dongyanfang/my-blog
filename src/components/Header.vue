@@ -1,7 +1,7 @@
 <template>
   <header class="header text-center">
     <h1 class="blog-name pt-lg-4 mb-0">
-      <a href="index.html">Anthony's Blog</a>
+      <a href="index.html">KevinCheng's Blog</a>
     </h1>
     <nav class="navbar navbar-expand-lg navbar-dark">
       <button
@@ -19,14 +19,13 @@
         <div class="profile-section pt-3 pt-lg-0">
           <img
             class="profile-image mb-3 rounded-circle mx-auto"
-            src="../assets/profile.png"
+            src="../assets/profile.jpg"
             alt="image"
           />
-          <div class="bio mb-3">
-            Hi, my name is Anthony Doe. Briefly introduce yourself here. You can also provide a link to the about page.
-            <br />
-            <a href="about.html" class="color-text">Find out more about me</a>
-          </div>
+          <!-- <div class="bio mb-3">
+            <p class="color-text">谭家成</p>
+            <p class="color-text">java开发工程师</p>
+          </div> -->
           <!--//bio-->
           <ul class="social-list list-inline py-3 mx-auto">
             <li class="list-inline-item">
@@ -101,7 +100,9 @@ export default {}
   width: 280px;
   background: #5ecca9;
   color: #fff;
-
+  .profile-image {
+    width: 10rem;
+  }
   .blog-name {
     font-weight: bold;
     font-size: 1.5rem;
